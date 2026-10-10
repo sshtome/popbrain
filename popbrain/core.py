@@ -75,7 +75,7 @@ class TensorBrainState:
 
 class PopBrain:
     def __init__(self, n_slots: int, minibrain_path: str,
-                 nt_sign_dict: dict, dan_zones: set,
+                 nt_sign_dict: dict = None, dan_zones: set = None,
                  gain: float = 0.4, dt_ms: float = 20.0, tau: float = 100.0,
                  Vrest: float = -65.0, Vth: float = -59.0, Vreset: float = -70.0,
                  refrac: float = 3.0, a_inc: float = 2.5, tau_a: float = 120.0,
@@ -473,6 +473,7 @@ class PopBrain:
             'w_mean': round(float(self.state.W.mean().item()), 4),
             'active': self._active_list.count(True),
         }
+
 
 
 
