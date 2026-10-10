@@ -1,4 +1,5 @@
 import os
+os.environ['DISTUTILS_USE_SDK'] = '1'
 from setuptools import setup, find_packages
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
