@@ -18,38 +18,61 @@ Under the hood, it uses **PyTorch Sparse CSR matrices** and custom **CUDA kernel
 
 PopBrain requires a CUDA-capable GPU and PyTorch.
 
-`ash
+\\\ash
 git clone https://github.com/sshtome/popbrain.git
 cd popbrain
 pip install -e .
-`
+\\\
 
 *Note: The installation will compile the custom CUDA extensions. Ensure you have the CUDA toolkit and a compatible C++ compiler installed.*
 
 ## Quick Start
 
-`python
+### 1. Define your Connectome
+PopBrain expects the brain topology to be defined in a JSON format containing the neurons and the sparse synaptic connections (p -> q with weight w).
+
+\\\json
+{
+  "neurons": [
+    {
+      "zone": "sensory_vision",
+      "nt": "Glu",
+      "role": "receptor"
+    },
+    {
+      "zone": "motor_leg",
+      "nt": "GABA",
+      "role": "actuator"
+    }
+  ],
+  "syn": {
+    "p": [0],
+    "q": [1],
+    "w": [0.5]
+  }
+}
+\\\
+
+### 2. Run the Simulation
+Once you have the JSON, initializing and running the simulation is extremely simple:
+
+\\\python
 import torch
 import json
 from popbrain import PopBrain
 
-# 1. Define your connectome (or load from JSON)
-# Expected JSON structure:
-# {
-#   "neurons": [{"zone": "sensory", "nt": "Glu"}, {"zone": "motor", "nt": "GABA"}, ...],
-#   "syn": {"p": [0, ...], "q": [1, ...], "w": [0.5, ...]} # p -> q with weight w
-# }
+# Load the topology
 with open("my_connectome.json", "r") as f:
     connectome_data = json.load(f)
 
-# 2. Initialize the brain engine for 32 parallel agents
+# Initialize the brain engine for 32 parallel agents
 brain = PopBrain(
     connectome_data, 
     batch_size=32, 
     device='cuda'
 )
 
-# 3. Simulation Loop
+# Simulation Loop
 for step in range(1000):
     # Create input currents for the 32 agents (e.g., from environment sensors)
     # Shape: [batch_size, num_neurons]
@@ -67,14 +90,14 @@ for step in range(1000):
     # Apply global reward/dopamine (modulates STDP)
     brain.apply_reward(torch.ones(32, device='cuda') * 0.1)
 
-`
+\\\
 
 ## Architecture
 
 PopBrain separates the **topology** from the **simulation**. 
 The topology is defined by your connectome data (which neurons exist, their neurotransmitter types, and the sparse connectivity graph).
-The simulation engine (PopBrain) compiles this topology into a highly optimized memory layout (allocating block-diagonal Sparse CSR matrices for batch processing) and dispatches the actual voltage updates to the snn_cuda extension.
+The simulation engine (\PopBrain\) compiles this topology into a highly optimized memory layout (allocating block-diagonal Sparse CSR matrices for batch processing) and dispatches the actual voltage updates to the \snn_cuda\ extension.
 
 ## License
 
-MIT License. See LICENSE for more information.
+MIT License. See \LICENSE\ for more information.
