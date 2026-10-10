@@ -2,10 +2,10 @@
 import numpy as np
 
 class AdamES:
-    \"\"\"
+    """
     OpenAI Evolution Strategies (ES) Optimizer with Adam for PopBrain.
     Uses Antithetic Sampling and Rank Normalization for extreme stability.
-    \"\"\"
+    """
     def __init__(self, brain, lr=0.002, sigma=0.05, beta1=0.9, beta2=0.999):
         self.brain = brain
         self.lr = lr
@@ -30,12 +30,12 @@ class AdamES:
         self.half_n = self.n_clones // 2
 
     def ask(self, champ_fly=0):
-        \"\"\"
+        """
         Generates noise (epsilons) and injects the perturbed weights into the clones.
         Slot 0 (or champ_fly) is kept as the pure champion.
         Slots 1 to half_n are positive perturbations.
         Slots half_n+1 to 2*half_n are negative perturbations.
-        \"\"\"
+        """
         Sblk = self.brain.state.Sblk
         self.champ_W0 = self.brain.state.W0[champ_fly * Sblk : (champ_fly + 1) * Sblk].clone()
         
@@ -56,10 +56,10 @@ class AdamES:
             self.brain.set_block_weights(1 + self.half_n + i, neg_W0, neg_W0)
 
     def tell(self, clone_rewards):
-        \"\"\"
+        """
         Computes the gradient from the clone rewards and applies the Adam update to the champion.
         Expects an array of rewards for slots 1 to n_clones.
-        \"\"\"
+        """
         if len(clone_rewards) != self.n_clones:
             # Extract exactly the clone rewards if a full array was passed
             clone_rewards = clone_rewards[1 : 1 + self.n_clones]
@@ -104,3 +104,4 @@ class AdamES:
             self.brain.set_block_weights(i, new_W0, new_W0)
             
         return new_W0
+
