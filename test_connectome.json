@@ -1,0 +1,1 @@
+{"neurons": [{"zone": "sensory", "nt": "Glu", "role": "receptor"}, {"zone": "motor", "nt": "GABA", "role": "actuator"}], "syn": {"p": [0], "q": [1], "w": [0.5]}}

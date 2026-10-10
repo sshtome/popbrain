@@ -85,8 +85,23 @@ class PopBrain:
         self.dt = dt_ms
         self.delay = max(1, int(round(2.0 / dt_ms)))
 
-        with open(minibrain_path, 'r', encoding='utf-8') as f:
-            mb = json.load(f)
+        import numpy as np
+        if minibrain_path.endswith('.json'):
+            with open(minibrain_path, 'r', encoding='utf-8') as f:
+                mb = json.load(f)
+        elif minibrain_path.endswith('.npz'):
+            data = np.load(minibrain_path, allow_pickle=True)
+            mb = {
+                'neurons': json.loads(str(data['neurons_metadata'])),
+                'syn': {
+                    'p': data['p'],
+                    'q': data['q'],
+                    'w': data['w']
+                }
+            }
+        else:
+            raise ValueError("minibrain_path must be a .json or .npz file")
+
         if nt_sign_dict is None: nt_sign_dict = {'Glu': 1.0, 'GABA': -1.0, 'ACh': 1.0}
         if dan_zones is None: dan_zones = set()
         if nt_sign_dict is None: nt_sign_dict = {'Glu': 1.0, 'GABA': -1.0, 'ACh': 1.0}
@@ -470,6 +485,8 @@ class PopBrain:
             'w_mean': round(float(self.state.W.mean().item()), 4),
             'active': self._active_list.count(True),
         }
+
+
 
 
 

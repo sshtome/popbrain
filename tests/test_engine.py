@@ -15,13 +15,13 @@ connectome_data = {
   }
 }
 
-with open("test_connectome.json", "w") as f:
+with open("tests/test_connectome.json", "w") as f:
     json.dump(connectome_data, f)
 
 print("Initializing PopBrain...")
 brain = PopBrain(
     n_slots=2,
-    minibrain_path="test_connectome.json"
+    minibrain_path="tests/test_connectome.npz"
 )
 
 for i in range(2):
@@ -37,3 +37,5 @@ rate = brain.pool_rate("motor", 0)
 
 print(f"Motor output rate after 20ms: {rate:.2f} Hz")
 print("Engine test complete!")
+
+
