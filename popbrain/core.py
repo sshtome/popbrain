@@ -31,10 +31,10 @@ def load_snn_cuda():
         except ImportError:
             from torch.utils.cpp_extension import load
             base_dir = os.path.dirname(os.path.abspath(__file__))
-            extra_cflags = ['-O3', '/Zc:preprocessor', '/Zm500'] if os.name == 'nt' else ['-O3']
+            extra_cflags = ['-O3', '/D_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH', '/Zc:preprocessor', '/Zm500'] if os.name == 'nt' else ['-O3']
             extra_cuda = ['-O3', '--use_fast_math']
             if os.name == 'nt':
-                extra_cuda += ['-allow-unsupported-compiler', '-Xcompiler', '/Zc:preprocessor', '-Xcompiler', '/Zm500', '-DCCCL_IGNORE_MSVC_TRADITIONAL_PREPROCESSOR_WARNING']
+                extra_cuda += ['-allow-unsupported-compiler', '-D_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH', '-Xcompiler', '/D_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH', '-Xcompiler', '/Zc:preprocessor', '-Xcompiler', '/Zm500', '-DCCCL_IGNORE_MSVC_TRADITIONAL_PREPROCESSOR_WARNING']
             _snn_cuda_module = load(
                 name="snn_cuda",
                 sources=[os.path.join(base_dir, "csrc", "snn_kernel.cu")],

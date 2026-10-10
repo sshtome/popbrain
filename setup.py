@@ -17,8 +17,8 @@ if build_ext:
             name='popbrain.snn_cuda',
             sources=['popbrain/csrc/snn_kernel.cu'],
             extra_compile_args={
-                'cxx': ['-O3'],
-                'nvcc': ['-O3', '--use_fast_math'] + (['-allow-unsupported-compiler', '-Xcompiler', '/Zc:preprocessor', '-Xcompiler', '/Zm500', '-DCCCL_IGNORE_MSVC_TRADITIONAL_PREPROCESSOR_WARNING'] if os.name == 'nt' else [])
+                'cxx': (['-O3', '/D_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH'] if os.name == 'nt' else ['-O3']),
+                'nvcc': ['-O3', '--use_fast_math'] + (['-allow-unsupported-compiler', '-D_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH', '-Xcompiler', '/D_ALLOW_COMPILER_AND_STL_VERSION_MISMATCH', '-Xcompiler', '/Zc:preprocessor', '-Xcompiler', '/Zm500', '-DCCCL_IGNORE_MSVC_TRADITIONAL_PREPROCESSOR_WARNING'] if os.name == 'nt' else [])
             }
         )
     ]
