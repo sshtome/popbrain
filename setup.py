@@ -1,5 +1,7 @@
 import os
 os.environ['DISTUTILS_USE_SDK'] = '1'
+if not os.environ.get('TORCH_CUDA_ARCH_LIST'):
+    os.environ['TORCH_CUDA_ARCH_LIST'] = '7.5 8.0 8.6 8.9+PTX'
 from setuptools import setup, find_packages
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
