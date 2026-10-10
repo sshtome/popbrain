@@ -1,4 +1,4 @@
-﻿# PopBrain 🧠⚡
+# PopBrain 🧠⚡
 
 PopBrain is a highly optimized, high-performance **Spiking Neural Network (SNN)** engine for PyTorch. 
 It is designed to simulate extremely large, sparse neural connectomes (hundreds of thousands of synapses) in parallel batches, making it ideal for Reinforcement Learning (RL), evolutionary strategies, and robotics.
@@ -8,7 +8,7 @@ Under the hood, it uses **PyTorch Sparse CSR matrices** and custom **CUDA kernel
 ## Features
 
 - **Extreme Performance:** Simulates massive networks using custom CUDA kernels and Sparse CSR tensors.
-- **Population Batching:** Simulate $ parallel "clones" of a brain simultaneously (e.g., for ES or RL vector environments).
+- **Population Batching:** Simulate $N$ parallel "clones" of a brain simultaneously (e.g., for ES or RL vector environments).
 - **Continuous STDP:** Built-in Spike-Timing-Dependent Plasticity. Synapses learn continuously based on spike timings.
 - **Neuromodulation:** Supports global reward signals (Dopamine) to modulate plasticity dynamically.
 - **E/I Balance:** Enforces Dale's Law natively (excitatory neurons stay excitatory, inhibitory stay inhibitory).
@@ -18,20 +18,20 @@ Under the hood, it uses **PyTorch Sparse CSR matrices** and custom **CUDA kernel
 
 PopBrain requires a CUDA-capable GPU and PyTorch.
 
-\\\ash
+```bash
 git clone https://github.com/sshtome/popbrain.git
 cd popbrain
 pip install -e .
-\\\
+```
 
-*Note: PopBrain uses JIT compilation for its CUDA extensions, which means it will compile the kernels automatically on the first import. Ensure you have the MSVC/CUDA compiler available in your terminal (e.g. Developer Command Prompt on Windows).*
+*Note: PopBrain uses JIT compilation for its CUDA extensions, which means it will compile the kernels automatically on the first import. Ensure you have the MSVC/CUDA compiler available in your terminal (e.g., Developer Command Prompt on Windows).*
 
 ## Quick Start
 
 ### 1. Define your Connectome
-PopBrain expects the brain topology to be defined in a JSON format containing the neurons and the sparse synaptic connections (\p\ -> \q\ with weight \w\).
+PopBrain expects the brain topology to be defined in a JSON format containing the neurons and the sparse synaptic connections (`p` -> `q` with weight `w`).
 
-\\\json
+```json
 {
   "neurons": [
     {
@@ -51,12 +51,12 @@ PopBrain expects the brain topology to be defined in a JSON format containing th
     "w": [0.5]
   }
 }
-\\\
+```
 
 ### 2. Run the Simulation
 Once you have the JSON, initializing and running the simulation is extremely simple using input channels and output pools:
 
-\\\python
+```python
 import torch
 import json
 from popbrain import PopBrain
@@ -88,9 +88,7 @@ for step in range(100):
     
     # Apply global reward/dopamine (modulates STDP plasticity)
     brain.reward_signal(amount=1.5, fly=0)
-
-\\\
-
+```
 
 ## Built-in ES Optimizer (Neuroevolution)
 
@@ -113,19 +111,18 @@ for epoch in range(100):
     brain.step(ms=100.0)
     
     # 3. Calculate rewards for all 25 agents
-    # rewards = get_rewards() # shape: (25,)
+    rewards = get_rewards() # shape: (25,)
     
     # 4. Compute gradient and update the Champion
-    # optimizer.tell(rewards)
+    optimizer.tell(rewards)
 ```
-
 
 ## Architecture
 
 PopBrain separates the **topology** from the **simulation**. 
 The topology is defined by your connectome data (which neurons exist, their neurotransmitter types, and the sparse connectivity graph).
-The simulation engine (\PopBrain\) compiles this topology into a highly optimized memory layout (allocating block-diagonal Sparse CSR matrices for batch processing) and dispatches the actual voltage updates to the \snn_cuda\ extension.
+The simulation engine (`PopBrain`) compiles this topology into a highly optimized memory layout (allocating block-diagonal Sparse CSR matrices for batch processing) and dispatches the actual voltage updates to the `snn_cuda` extension.
 
 ## License
 
-MIT License. See \LICENSE\ for more information.
+MIT License. See `LICENSE` for more information.
