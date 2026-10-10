@@ -90,6 +90,8 @@ class PopBrain:
 
         with open(minibrain_path, 'r', encoding='utf-8') as f:
             mb = json.load(f)
+        if nt_sign_dict is None: nt_sign_dict = {'Glu': 1.0, 'GABA': -1.0, 'ACh': 1.0}
+        if dan_zones is None: dan_zones = set()
 
         Nblk = len(mb['neurons'])
         self.zones = [n['zone'] for n in mb['neurons']]
@@ -469,5 +471,6 @@ class PopBrain:
             'w_mean': round(float(self.state.W.mean().item()), 4),
             'active': self._active_list.count(True),
         }
+
 
 
