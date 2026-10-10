@@ -16,8 +16,18 @@ Under the hood, it uses **PyTorch Sparse CSR matrices** and custom **CUDA kernel
 
 ## Installation
 
-PopBrain is best run via our pre-configured Docker container to avoid CUDA compilation issues on Windows/Linux host machines.
+PopBrain compiles custom CUDA kernels. You have 3 easy ways to run it:
 
+### Option 1: Precompiled Wheels (Recommended)
+You can download precompiled binary wheels (`.whl`) directly from our [GitHub Actions / Releases] page.
+Just download the wheel for your OS and Python version, then:
+```bash
+pip install popbrain-1.0.0-cp310-cp310-win_amd64.whl
+```
+*(No Visual Studio or Docker required!)*
+
+### Option 2: Docker
+We provide a pre-configured Docker container:
 ```bash
 git clone https://github.com/sshtome/popbrain.git
 cd popbrain
@@ -25,7 +35,14 @@ docker build -t popbrain .
 docker run --gpus all -it popbrain
 ```
 
-*If you prefer a local installation, you can install from source (`pip install -e .`). Make sure you have the MSVC (Windows) or GCC (Linux) compiler available for JIT CUDA compilation.*
+### Option 3: Compile from Source (JIT)
+If you already have Visual Studio C++ Build Tools (Windows) or GCC (Linux) installed:
+```bash
+git clone https://github.com/sshtome/popbrain.git
+cd popbrain
+pip install -e .
+```
+*(The CUDA kernels will automatically compile on the fly during the first import).*
 
 ## Quick Start
 
@@ -64,7 +81,7 @@ Structure of the topology (JSON equivalent):
 ```
 
 ### 2. Run the Simulation
-Once you have the JSON, initializing and running the simulation is extremely simple using input channels and output pools:
+Once you have the JSON/NPZ, initializing and running the simulation is extremely simple using input channels and output pools:
 
 ```python
 import torch
