@@ -91,6 +91,35 @@ for step in range(100):
 
 \\\
 
+
+## Built-in ES Optimizer (Neuroevolution)
+
+Training Spiking Neural Networks via backpropagation is notoriously difficult. PopBrain includes a built-in **OpenAI Evolution Strategies (ES)** optimizer, accelerated by Adam, Antithetic Sampling, and Rank Normalization. It is specifically designed to work seamlessly with PopBrain's parallel batches.
+
+```python
+from popbrain.optim import AdamES
+
+# Requires an odd number of agents (1 champion + N even clones for antithetic noise)
+brain = PopBrain(n_slots=25, minibrain_path="my_connectome.json")
+
+# Initialize optimizer
+optimizer = AdamES(brain, lr=0.1, sigma=0.05)
+
+for epoch in range(100):
+    # 1. Perturb clone weights automatically
+    optimizer.ask(champ_fly=0)
+    
+    # 2. Run your simulation...
+    brain.step(ms=100.0)
+    
+    # 3. Calculate rewards for all 25 agents
+    # rewards = get_rewards() # shape: (25,)
+    
+    # 4. Compute gradient and update the Champion
+    # optimizer.tell(rewards)
+```
+
+
 ## Architecture
 
 PopBrain separates the **topology** from the **simulation**. 
