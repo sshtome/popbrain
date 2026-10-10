@@ -30,10 +30,7 @@ def load_snn_cuda():
         base_dir = os.path.dirname(os.path.abspath(__file__))
         _snn_cuda_module = load(
             name="snn_cuda",
-            sources=[
-                os.path.join(base_dir, "csrc", "snn_bind.cpp"),
-                os.path.join(base_dir, "csrc", "snn_kernel.cu")
-            ],
+            sources=[os.path.join(base_dir, "csrc", "snn_kernel.cu")],
             verbose=False,
             extra_cflags=['-O3', '/Zc:preprocessor', '/Zm500'],
             extra_cuda_cflags=['-O3', '--use_fast_math', '-Xcompiler', '/Zc:preprocessor', '-Xcompiler', '/Zm500', '-DCCCL_IGNORE_MSVC_TRADITIONAL_PREPROCESSOR_WARNING']
@@ -473,6 +470,7 @@ class PopBrain:
             'w_mean': round(float(self.state.W.mean().item()), 4),
             'active': self._active_list.count(True),
         }
+
 
 
 
