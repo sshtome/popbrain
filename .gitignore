@@ -1,6 +1,12 @@
-﻿*.pyc
+*.pyc
 __pycache__/
 build/
 dist/
 *.egg-info/
 .DS_Store
+*.pyd
+*.so
+*.whl
+*.zip
+downloaded_wheels/
+*.log
