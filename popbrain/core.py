@@ -1,4 +1,4 @@
-﻿"""
+"""
 Р‘Р°С‚С‡-РґРІРёР¶РѕРє РїРѕРїСѓР»СЏС†РёРё (PopBrain): N РјСѓС… РІ РѕРґРЅРѕР№ Р±Р»РѕС‡РЅРѕ-РґРёР°РіРѕРЅР°Р»СЊРЅРѕР№ CSR.
 
 РћСЃРѕР±РµРЅРЅРѕСЃС‚Рё:
@@ -26,8 +26,11 @@ _snn_cuda_module = None
 def load_snn_cuda():
     global _snn_cuda_module
     if _snn_cuda_module is None:
-        from torch.utils.cpp_extension import load
-        base_dir = os.path.dirname(os.path.abspath(__file__))
+        try:
+            import popbrain.snn_cuda as _snn_cuda_module
+        except ImportError:
+            from torch.utils.cpp_extension import load
+            base_dir = os.path.dirname(os.path.abspath(__file__))
         _snn_cuda_module = load(
             name="snn_cuda",
             sources=[os.path.join(base_dir, "csrc", "snn_kernel.cu")],
