@@ -1,4 +1,4 @@
-﻿import os
+import os
 from setuptools import setup, find_packages
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
@@ -12,7 +12,7 @@ if build_ext:
             sources=['popbrain/csrc/snn_kernel.cu'],
             extra_compile_args={
                 'cxx': ['-O3'],
-                'nvcc': ['-O3', '--use_fast_math']
+                'nvcc': ['-O3', '--use_fast_math', '-Xcompiler', '/Zc:preprocessor', '-Xcompiler', '/Zm500', '-DCCCL_IGNORE_MSVC_TRADITIONAL_PREPROCESSOR_WARNING']
             }
         )
     ]
