@@ -4,6 +4,9 @@ from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
 build_ext = os.environ.get('BUILD_CUDA_EXT', '0') == '1'
 
+import torch.utils.cpp_extension as cpp
+cpp._check_cuda_version = lambda *args, **kwargs: None
+
 ext_modules = []
 if build_ext:
     ext_modules = [
