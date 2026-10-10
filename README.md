@@ -16,9 +16,14 @@ Under the hood, it uses **PyTorch Sparse CSR matrices** and custom **CUDA kernel
 
 ## Installation
 
-PopBrain requires a CUDA-capable GPU and PyTorch.
+PopBrain provides **precompiled wheels** for Windows and Linux.
+Just run:
 
 ```bash
+pip install popbrain
+```
+
+*If no precompiled wheel is available for your exact OS/Python version, Pip will automatically fallback to building from source via `pip install -e .`.*bash
 git clone https://github.com/sshtome/popbrain.git
 cd popbrain
 pip install -e .
@@ -28,9 +33,38 @@ pip install -e .
 
 ## Quick Start
 
-### 1. Define your Connectome
-PopBrain expects the brain topology to be defined in a JSON format containing the neurons and the sparse synaptic connections (`p` -> `q` with weight `w`).
+### 1. Define your Connectome (JSON or NPZ)
+PopBrain supports loading topologies from JSON files (for debugging/small networks) or binary **NPZ files** (for hyper-fast loading of massive networks with millions of synapses).
 
+To convert a JSON connectome into an ultra-fast NPZ archive, we provide a built-in utility:
+```bash
+python -m popbrain.utils my_connectome.json my_connectome.npz
+```
+
+The engine will automatically detect the `.npz` extension and load it instantly.
+
+Structure of the topology (JSON equivalent):
+
+```json
+{
+  "neurons": [
+    {
+      "zone": "sensory_vision",
+      "nt": "Glu",
+      "role": "receptor"
+    },
+    {
+      "zone": "motor_leg",
+      "nt": "GABA",
+      "role": "actuator"
+    }
+  ],
+  "syn": {
+    "p": [0],
+    "q": [1],
+    "w": [0.5]
+  }
+}
 ```json
 {
   "neurons": [
