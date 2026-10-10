@@ -92,6 +92,8 @@ class PopBrain:
             mb = json.load(f)
         if nt_sign_dict is None: nt_sign_dict = {'Glu': 1.0, 'GABA': -1.0, 'ACh': 1.0}
         if dan_zones is None: dan_zones = set()
+        if nt_sign_dict is None: nt_sign_dict = {'Glu': 1.0, 'GABA': -1.0, 'ACh': 1.0}
+        if dan_zones is None: dan_zones = set()
 
         Nblk = len(mb['neurons'])
         self.zones = [n['zone'] for n in mb['neurons']]
