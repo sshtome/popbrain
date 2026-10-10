@@ -12,7 +12,7 @@ Under the hood, it uses **PyTorch Sparse CSR matrices** and custom **CUDA kernel
 - **Continuous STDP:** Built-in Spike-Timing-Dependent Plasticity. Synapses learn continuously based on spike timings.
 - **Neuromodulation:** Supports global reward signals (Dopamine) to modulate plasticity dynamically.
 - **E/I Balance:** Enforces Dale's Law natively (excitatory neurons stay excitatory, inhibitory stay inhibitory).
-- **Environment Agnostic:** A pure mathematical engine. Feed it an input current tensor, get an output spike tensor.
+- **Continuous-Time Simulation:** Define continuous Poisson input channels and read integrated output rates via spike pooling.
 
 ## Installation
 
@@ -24,12 +24,12 @@ cd popbrain
 pip install -e .
 \\\
 
-*Note: The installation will compile the custom CUDA extensions. Ensure you have the CUDA toolkit and a compatible C++ compiler installed.*
+*Note: PopBrain uses JIT compilation for its CUDA extensions, which means it will compile the kernels automatically on the first import. Ensure you have the MSVC/CUDA compiler available in your terminal (e.g. Developer Command Prompt on Windows).*
 
 ## Quick Start
 
 ### 1. Define your Connectome
-PopBrain expects the brain topology to be defined in a JSON format containing the neurons and the sparse synaptic connections (p -> q with weight w).
+PopBrain expects the brain topology to be defined in a JSON format containing the neurons and the sparse synaptic connections (\p\ -> \q\ with weight \w\).
 
 \\\json
 {
@@ -54,41 +54,40 @@ PopBrain expects the brain topology to be defined in a JSON format containing th
 \\\
 
 ### 2. Run the Simulation
-Once you have the JSON, initializing and running the simulation is extremely simple:
+Once you have the JSON, initializing and running the simulation is extremely simple using input channels and output pools:
 
 \\\python
 import torch
 import json
 from popbrain import PopBrain
 
-# Load the topology
-with open("my_connectome.json", "r") as f:
-    connectome_data = json.load(f)
-
-# Initialize the brain engine for 32 parallel agents
+# Initialize the brain engine for 32 parallel agents (slots)
 brain = PopBrain(
-    connectome_data, 
-    batch_size=32, 
-    device='cuda'
+    n_slots=32,
+    minibrain_path="my_connectome.json"
 )
 
+# Define an input channel for sensory neurons (e.g., neuron index 0)
+# and an output pool for motor neurons (e.g., neuron index 1)
+for agent_id in range(32):
+    brain.add_channel("sensor_x", idxs=[0], rate=0.0, w=10.0, fly=agent_id)
+    brain.add_pool("motor_y", idxs=[1], fly=agent_id)
+
+brain.commit_channels()
+
 # Simulation Loop
-for step in range(1000):
-    # Create input currents for the 32 agents (e.g., from environment sensors)
-    # Shape: [batch_size, num_neurons]
-    I = torch.zeros((32, len(connectome_data['neurons'])), device='cuda')
+for step in range(100):
+    # Set the firing rate (Hz) for the sensor of agent 0
+    brain.set_rate("sensor_x", rate=150.0, fly=0)
     
-    # Inject current into specific sensory neurons
-    I[:, 0] = 5.0 
+    # Run the continuous-time simulation for 20 milliseconds
+    brain.step(ms=20.0)
     
-    # Forward pass (1 millisecond of simulation)
-    spikes = brain.forward(I)
+    # Read the integrated motor output rate (Hz) for agent 0
+    motor_activity = brain.pool_rate("motor_y", fly=0)
     
-    # Read motor spikes
-    motor_activity = spikes[:, 1] # Check if neuron 1 spiked
-    
-    # Apply global reward/dopamine (modulates STDP)
-    brain.apply_reward(torch.ones(32, device='cuda') * 0.1)
+    # Apply global reward/dopamine (modulates STDP plasticity)
+    brain.reward_signal(amount=1.5, fly=0)
 
 \\\
 
@@ -101,4 +100,3 @@ The simulation engine (\PopBrain\) compiles this topology into a highly optimize
 ## License
 
 MIT License. See \LICENSE\ for more information.
-
