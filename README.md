@@ -1,4 +1,4 @@
-﻿# PopBrain рџ§ вљЎ
+# PopBrain 🧠⚡
 
 PopBrain is a highly optimized, high-performance **Spiking Neural Network (SNN)** engine for PyTorch. 
 It is designed to simulate extremely large, sparse neural connectomes (hundreds of thousands of synapses) in parallel batches, making it ideal for Reinforcement Learning (RL), evolutionary strategies, and robotics.
@@ -16,4 +16,123 @@ Under the hood, it uses **PyTorch Sparse CSR matrices** and custom **CUDA kernel
 
 ## Installation
 
+PopBrain is best run via our pre-configured Docker container to avoid CUDA compilation issues on Windows/Linux host machines.
 
+```bash
+git clone https://github.com/sshtome/popbrain.git
+cd popbrain
+docker build -t popbrain .
+docker run --gpus all -it popbrain
+```
+
+*If you prefer a local installation, you can install from source (`pip install -e .`). Make sure you have the MSVC (Windows) or GCC (Linux) compiler available for JIT CUDA compilation.*
+
+## Quick Start
+
+### 1. Define your Connectome (JSON or NPZ)
+PopBrain supports loading topologies from JSON files (for debugging/small networks) or binary **NPZ files** (for hyper-fast loading of massive networks with millions of synapses).
+
+To convert a JSON connectome into an ultra-fast NPZ archive, we provide a built-in utility:
+```bash
+python -m popbrain.utils my_connectome.json my_connectome.npz
+```
+
+The engine will automatically detect the `.npz` extension and load it instantly.
+
+Structure of the topology (JSON equivalent):
+
+```json
+{
+  "neurons": [
+    {
+      "zone": "sensory_vision",
+      "nt": "Glu",
+      "role": "receptor"
+    },
+    {
+      "zone": "motor_leg",
+      "nt": "GABA",
+      "role": "actuator"
+    }
+  ],
+  "syn": {
+    "p": [0],
+    "q": [1],
+    "w": [0.5]
+  }
+}
+```
+
+### 2. Run the Simulation
+Once you have the JSON, initializing and running the simulation is extremely simple using input channels and output pools:
+
+```python
+import torch
+import json
+from popbrain import PopBrain
+
+# Initialize the brain engine for 32 parallel agents (slots)
+brain = PopBrain(
+    n_slots=32,
+    minibrain_path="my_connectome.npz"
+)
+
+# Define an input channel for sensory neurons (e.g., neuron index 0)
+# and an output pool for motor neurons (e.g., neuron index 1)
+for agent_id in range(32):
+    brain.add_channel("sensor_x", idxs=[0], rate=0.0, w=10.0, fly=agent_id)
+    brain.add_pool("motor_y", idxs=[1], fly=agent_id)
+
+brain.commit_channels()
+
+# Simulation Loop
+for step in range(100):
+    # Set the firing rate (Hz) for the sensor of agent 0
+    brain.set_rate("sensor_x", rate=150.0, fly=0)
+    
+    # Run the continuous-time simulation for 20 milliseconds
+    brain.step(ms=20.0)
+    
+    # Read the integrated motor output rate (Hz) for agent 0
+    motor_activity = brain.pool_rate("motor_y", fly=0)
+    
+    # Apply global reward/dopamine (modulates STDP plasticity)
+    brain.reward_signal(amount=1.5, fly=0)
+```
+
+## Built-in ES Optimizer (Neuroevolution)
+
+Training Spiking Neural Networks via backpropagation is notoriously difficult. PopBrain includes a built-in **OpenAI Evolution Strategies (ES)** optimizer, accelerated by Adam, Antithetic Sampling, and Rank Normalization. It is specifically designed to work seamlessly with PopBrain's parallel batches.
+
+```python
+from popbrain.optim import AdamES
+
+# Requires an odd number of agents (1 champion + N even clones for antithetic noise)
+brain = PopBrain(n_slots=25, minibrain_path="my_connectome.npz")
+
+# Initialize optimizer
+optimizer = AdamES(brain, lr=0.1, sigma=0.05)
+
+for epoch in range(100):
+    # 1. Perturb clone weights automatically
+    optimizer.ask(champ_fly=0)
+    
+    # 2. Run your simulation...
+    brain.step(ms=100.0)
+    
+    # 3. Calculate rewards for all 25 agents
+    rewards = get_rewards() # shape: (25,)
+    
+    # 4. Compute gradient and update the Champion
+    optimizer.tell(rewards)
+```
+
+## Architecture
+
+PopBrain separates the **topology** from the **simulation**. 
+The topology is defined by your connectome data (which neurons exist, their neurotransmitter types, and the sparse connectivity graph).
+The simulation engine (`PopBrain`) compiles this topology into a highly optimized memory layout (allocating block-diagonal Sparse CSR matrices for batch processing) and dispatches the actual voltage updates to the `snn_cuda` extension.
+
+## License
+
+MIT License. See `LICENSE` for more information.
