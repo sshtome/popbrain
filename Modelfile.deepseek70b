@@ -1,0 +1,24 @@
+# PopBrain 70B Model Profile: DeepSeek-R1-Distill-Llama-70B
+# =========================================================================
+# Set the path below to your downloaded .gguf file
+FROM models/DeepSeek-R1-Distill-Llama-70B-IQ2_M.gguf
+
+TEMPLATE """{{ if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ if .Prompt }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant
+{{ .Response }}<|im_end|>"""
+
+# Context window: 2048 tokens fits comfortably in memory
+PARAMETER num_ctx 2048
+
+# GPU layer offloading guide:
+# - 12GB VRAM (RTX 3060/4070): num_gpu 32  (leaves ~20% VRAM buffer for OS/DWM)
+# - 16GB VRAM (RTX 4080):      num_gpu 48
+# - 24GB VRAM (RTX 3090/4090): num_gpu 68
+# - 32GB+ / Dual GPU:          num_gpu 80  (100% in VRAM)
+PARAMETER num_gpu 32
+
+PARAMETER temperature 0.6
+PARAMETER top_p 0.95
