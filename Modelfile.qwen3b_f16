@@ -1,0 +1,19 @@
+FROM d:\projects\models\Qwen2.5-Coder-3B-Instruct-f16.gguf
+
+TEMPLATE """{{ if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ if .Prompt }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant
+{{ .Response }}<|im_end|>"""
+
+# Context window: 4096 tokens
+PARAMETER num_ctx 4096
+
+# 36 out of 36 layers offloaded to GPU (100% pure FP16 execution in VRAM)
+PARAMETER num_gpu 36
+
+# Deterministic evaluation parameters
+PARAMETER temperature 0.0
+PARAMETER top_p 1.0
+PARAMETER seed 42
