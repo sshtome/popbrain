@@ -1,0 +1,169 @@
+{
+  "metadata": {
+    "model": "qwen2.5-coder-3b-q4:latest",
+    "timestamp": 1791716171.3098905,
+    "experiment": "Catastrophic Forgetting Sequential Domains"
+  },
+  "phases": {
+    "phase1_baseline": {
+      "p1_a_acc": 37.5,
+      "p1_b_acc": 100.0
+    },
+    "phase2_train_a": {
+      "post_a_acc": 12.5,
+      "train_log": [
+        {
+          "ep": 1,
+          "reward": -1.0,
+          "passed": false
+        },
+        {
+          "ep": 2,
+          "reward": -1.0,
+          "passed": false
+        },
+        {
+          "ep": 3,
+          "reward": -1.0,
+          "passed": false
+        },
+        {
+          "ep": 4,
+          "reward": -1.0,
+          "passed": false
+        },
+        {
+          "ep": 5,
+          "reward": -1.0,
+          "passed": false
+        },
+        {
+          "ep": 6,
+          "reward": -1.0,
+          "passed": false
+        },
+        {
+          "ep": 7,
+          "reward": -1.0,
+          "passed": false
+        },
+        {
+          "ep": 8,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 9,
+          "reward": -1.0,
+          "passed": false
+        },
+        {
+          "ep": 10,
+          "reward": -1.0,
+          "passed": false
+        },
+        {
+          "ep": 11,
+          "reward": -1.0,
+          "passed": false
+        },
+        {
+          "ep": 12,
+          "reward": -1.0,
+          "passed": false
+        }
+      ]
+    },
+    "phase3_train_b": {
+      "post_b_acc": 100.0,
+      "train_log": [
+        {
+          "ep": 1,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 2,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 3,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 4,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 5,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 6,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 7,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 8,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 9,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 10,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 11,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 12,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 13,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 14,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 15,
+          "reward": 1.0,
+          "passed": true
+        },
+        {
+          "ep": 16,
+          "reward": 1.0,
+          "passed": true
+        }
+      ]
+    },
+    "phase4_retention": {
+      "final_a_acc": 12.5,
+      "retention_ratio": 100.0,
+      "forgetting_delta": 0.0,
+      "synaptic_cosine_sim": 0.5345533490180969
+    }
+  }
+}

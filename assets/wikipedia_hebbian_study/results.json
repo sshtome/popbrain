@@ -1,0 +1,17 @@
+{
+  "model": "BitNet-b1.58-2B-4T",
+  "parameters": "2.4B",
+  "training_mode": "Zero-Backprop Three-Factor Hebbian STDP",
+  "article": "Vera C. Rubin Observatory",
+  "blind_prompt": "The Vera C. Rubin Observatory is located on the mountain of",
+  "target_continuation": "Cerro Pachón in northern Chile",
+  "baseline_output": "Mauna Kea in Hawaii. The observatory is a 4,200-foot-tall mountain that is the highest point",
+  "post_training_output": "in in in in in in in in in in in in in in in in in in in in in in in in in",
+  "target_token_prob_pre": 1.0151416063308716e-07,
+  "target_token_prob_post": 0.0,
+  "prob_gain": -1.0151416063308716e-05,
+  "control_pre": "Paris, France. It is a famous landmark that attracts millions of visitors every",
+  "control_post": "in in in in in in in in in in in in in in in",
+  "synaptic_norm": 3552.0,
+  "duration_sec": 0.5139157772064209
+}

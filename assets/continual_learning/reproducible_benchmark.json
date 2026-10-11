@@ -1,0 +1,10 @@
+{
+  "model": "qwen2.5-coder-3b-q4:latest",
+  "acc_base_a": 25.0,
+  "acc_post_a": 0.0,
+  "acc_post_b": 75.0,
+  "acc_retained_a": 75.0,
+  "retention_rate": 7500.0,
+  "forgetting_delta": 75.0,
+  "cos_ortho": 0.5053299069404602
+}

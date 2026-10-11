@@ -1,0 +1,66 @@
+{
+  "model": "BitNet-b1.58-2B-4T",
+  "parameters": "2.4B",
+  "mean_baseline": 0.0,
+  "mean_post": 66.66666666666666,
+  "delta": 66.66666666666666,
+  "forgetting_delta": 0.0,
+  "train_latency_ms": 101.18746757507324,
+  "baseline_records": [
+    {
+      "id": "wiki_rubin_observatory",
+      "prompt": "The Vera C. Rubin Observatory is located on the mountain of",
+      "output": "Mauna Kea in Hawaii.",
+      "score": 0.0,
+      "passed": false
+    },
+    {
+      "id": "wiki_nobel_2024",
+      "prompt": "In October 2024, the Nobel Prize in Physics was awarded to John Hopfield and Geoffrey Hinton for",
+      "output": "their work on neural networks.",
+      "score": 0.0,
+      "passed": false
+    }
+  ],
+  "post_records": [
+    {
+      "id": "wiki_rubin_observatory",
+      "prompt": "The Vera C. Rubin Observatory is located on the mountain of",
+      "output": "Cerro Pachon in northern Chile, at an altitude of 2,6 000 meters.",
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "id": "wiki_nobel_2024",
+      "prompt": "In October 2024, the Nobel Prize in Physics was awarded to John Hopfield and Geoffrey Hinton for",
+      "output": "foundational discoveries in the field of neural networks.",
+      "score": 0.3333333333333333,
+      "passed": false
+    }
+  ],
+  "control_pre": [
+    {
+      "id": "ctrl_eiffel_tower",
+      "output": "Paris, France.",
+      "passed": true
+    },
+    {
+      "id": "ctrl_python_lang",
+      "output": "its simplicity and readability.",
+      "passed": true
+    }
+  ],
+  "control_post": [
+    {
+      "id": "ctrl_eiffel_tower",
+      "output": "Paris, France.",
+      "passed": true
+    },
+    {
+      "id": "ctrl_python_lang",
+      "output": "its simplicity and readability.",
+      "passed": true
+    }
+  ],
+  "stored_transitions": 68
+}

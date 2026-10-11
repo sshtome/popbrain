@@ -25,7 +25,7 @@ if build_ext:
 
 setup(
     name='popbrain',
-    version='1.0.0',
+    version='1.1.0',
     description='A highly optimized Spiking Neural Network (SNN) engine using PyTorch Sparse CSR and custom CUDA kernels.',
     author='PopBrain Contributors',
     packages=find_packages(),

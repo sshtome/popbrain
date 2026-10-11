@@ -5,5 +5,6 @@ Biological three-factor learning, synaptic plasticity adapters, and runtime rewa
 """
 
 from popbrain.dopamine.adapter import PopBrainSpikingAdapter
+from popbrain.dopamine.synaptic_memory import PopBrainSynapticMemory
 
-__all__ = ["PopBrainSpikingAdapter"]
+__all__ = ["PopBrainSpikingAdapter", "PopBrainSynapticMemory"]
