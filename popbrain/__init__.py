@@ -20,7 +20,7 @@ from .optim import AdamES
 from .utils import convert_json_to_npz
 from .streamer import SlidingWindowStreamer, SpikeActivationGate, TieredLayerStreamer
 from . import models
-from .dopamine import PopBrainSpikingAdapter, PopBrainSynapticMemory
+from .dopamine import PopBrainSpikingAdapter, PopBrainSynapticMemory, SynapticCapacityBenchmark
 
 __version__ = "1.1.0"
 __all__ = [
@@ -33,5 +33,6 @@ __all__ = [
     "SpikeActivationGate",
     "PopBrainSpikingAdapter",
     "PopBrainSynapticMemory",
+    "SynapticCapacityBenchmark",
     "models",
 ]

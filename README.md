@@ -160,6 +160,28 @@ $$\tilde{h}_t = h_t + \alpha \sum_k \frac{\tilde{w}_k}{\sum_j \tilde{w}_j} V_k \
 * **Ingestion Latency:** **65.0 – 101.2 ms** (single forward pass, zero training epochs).
 * **Autograd Computational Graph Memory:** **0 MB** (`torch.no_grad()`).
 
+#### Memory Capacity vs. Cross-Talk Interference Study (SQuAD Dataset)
+
+Using the automated [`SynapticCapacityBenchmark`](popbrain/dopamine/capacity_evaluator.py) harness, we scaled memory load from $N = 5$ to $N = 50$ distinct factual question-answer pairs (819 synaptic transitions), testing cross-talk on 15 unlearned distractor questions:
+
+<div align="center">
+  <img src="assets/capacity_study/capacity_vs_interference.png" width="95%" alt="PopBrain Synaptic Capacity vs Interference Benchmark" />
+</div>
+
+| Stored Facts ($N$) | Synaptic Transitions | Recall Rate ($R(N)$) | Cross-Talk Interference ($I(N)$) | General Knowledge Retention | Ingestion Latency (ms/fact) |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| **$N = 5$** | 81 | **60.0%** | **0.0%** | **66.7%** | 109.2 ms |
+| **$N = 10$** | 158 | **80.0%** | **0.0%** | **66.7%** | 48.3 ms |
+| **$N = 20$** | 342 | **80.0%** | **0.0%** | **66.7%** | 49.3 ms |
+| **$N = 30$** | 518 | **80.0%** | **13.3%** | **66.7%** | 44.1 ms |
+| **$N = 40$** | 669 | **75.0%** | **13.3%** | **66.7%** | 42.6 ms |
+| **$N = 50$** | 819 | **76.0%** | **13.3%** | **66.7%** | 45.6 ms |
+
+Run the capacity scaling benchmark:
+```bash
+python examples/run_capacity_vs_interference_study.py --milestones "5,10,20,30,40,50"
+```
+
 ## Quickstart
 
 ### Installation
@@ -353,6 +375,7 @@ popbrain/
 │   ├── dopamine/             # Neuromorphic In-Flight Synaptic Plasticity
 │   │   ├── adapter.py        # PopBrainSpikingAdapter (LIF + Reward-Modulated STDP)
 │   │   ├── synaptic_memory.py# PopBrainSynapticMemory (Hetero-Associative + GABA Lateral Inhibition)
+│   │   ├── capacity_evaluator.py # SynapticCapacityBenchmark & Scaling Harness
 │   │   └── __init__.py       # Dopamine Submodule API
 │   └── models/               # Neuromorphic & MatMul-Free Model Zoo
 │       ├── spikegpt.py       # SpikeGPT-216M (Fused LIF + Sparse Linear)
@@ -363,6 +386,7 @@ popbrain/
 │   ├── popbrain_spiking_adapter.pt          # PyTorch Binary Checkpoint
 │   └── wikipedia_synaptic_memory.pt         # Zero-Backprop Wikipedia Memory (698 KB)
 ├── examples/
+│   ├── run_capacity_vs_interference_study.py # SQuAD Scaling & Interference Benchmark
 │   ├── run_wikipedia_synaptic_learning.py  # Zero-Backprop Wikipedia Quickstart Demo
 │   ├── run_wikipedia_scientific_benchmark.py # Factual Ingestion & Forgetting Benchmark
 │   ├── run_dopamine_training.py            # Online Synaptic Learning & Verification
@@ -374,6 +398,7 @@ popbrain/
 ├── scripts/
 │   └── fast_download.py      # Resumable multi-threaded chunked downloader
 ├── assets/
+│   ├── capacity_study/          # SQuAD Scaling Plot & Results JSON
 │   ├── wikipedia_hebbian_study/ # Benchmark Logs & Metrics JSON
 │   ├── multi_model_large_benchmark.json # Verified 70B-32B-14B-3B Comparative Logs
 │   ├── llm_streaming_benchmark.png

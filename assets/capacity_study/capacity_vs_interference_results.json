@@ -1,0 +1,58 @@
+{
+  "milestones": [
+    5,
+    10,
+    20,
+    30,
+    40,
+    50
+  ],
+  "recall_rates": [
+    60.0,
+    80.0,
+    80.0,
+    80.0,
+    75.0,
+    76.0
+  ],
+  "interference_rates": [
+    0.0,
+    0.0,
+    0.0,
+    13.33,
+    13.33,
+    13.33
+  ],
+  "control_retention": [
+    66.67,
+    66.67,
+    66.67,
+    66.67,
+    66.67,
+    66.67
+  ],
+  "ingestion_latencies_ms": [
+    109.22,
+    48.34,
+    49.26,
+    44.06,
+    42.56,
+    45.6
+  ],
+  "cumulative_memories": [
+    81,
+    158,
+    342,
+    518,
+    669,
+    819
+  ],
+  "metadata": {
+    "model": "BitNet-b1.58-2B-4T",
+    "parameters": "2.4B",
+    "device": "cuda",
+    "threshold": 0.85,
+    "alpha": 0.18,
+    "total_runtime_sec": 107.41
+  }
+}
