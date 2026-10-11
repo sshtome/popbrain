@@ -1,0 +1,778 @@
+{
+  "metadata": {
+    "model": "qwen2.5-coder-3b-q4:latest",
+    "task": "LRUCache DoublyLinkedList O(1)",
+    "runs_per_regime": 25
+  },
+  "regimes": {
+    "baseline": [
+      {
+        "iteration": 1,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 59.5
+      },
+      {
+        "iteration": 2,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 61.1
+      },
+      {
+        "iteration": 3,
+        "reward": -0.2,
+        "tests_passed": false,
+        "error": "Runtime error: AttributeError: 'NoneType' object has no attribute 'prev' and no __dict__ for setting new attributes",
+        "speed_tok_s": 63.9
+      },
+      {
+        "iteration": 4,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 60.7
+      },
+      {
+        "iteration": 5,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 62.0
+      },
+      {
+        "iteration": 6,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 61.5
+      },
+      {
+        "iteration": 7,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 59.8
+      },
+      {
+        "iteration": 8,
+        "reward": -1.0,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.2
+      },
+      {
+        "iteration": 9,
+        "reward": -1.0,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.2
+      },
+      {
+        "iteration": 10,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 62.2
+      },
+      {
+        "iteration": 11,
+        "reward": -1.0,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 63.3
+      },
+      {
+        "iteration": 12,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 61.7
+      },
+      {
+        "iteration": 13,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 63.3
+      },
+      {
+        "iteration": 14,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 59.0
+      },
+      {
+        "iteration": 15,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 63.3
+      },
+      {
+        "iteration": 16,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 60.2
+      },
+      {
+        "iteration": 17,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 64.2
+      },
+      {
+        "iteration": 18,
+        "reward": -0.2,
+        "tests_passed": false,
+        "error": "Runtime error: AttributeError: 'NoneType' object has no attribute 'next' and no __dict__ for setting new attributes",
+        "speed_tok_s": 58.5
+      },
+      {
+        "iteration": 19,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 64.2
+      },
+      {
+        "iteration": 20,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 54.6
+      },
+      {
+        "iteration": 21,
+        "reward": -1.0,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.2
+      },
+      {
+        "iteration": 22,
+        "reward": 0.2,
+        "tests_passed": false,
+        "error": "Key 2 was not evicted",
+        "speed_tok_s": 63.3
+      },
+      {
+        "iteration": 23,
+        "reward": -1.0,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.0
+      },
+      {
+        "iteration": 24,
+        "reward": -1.0,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 62.4
+      },
+      {
+        "iteration": 25,
+        "reward": 1.0,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 58.2
+      }
+    ],
+    "three_factor_hebbian": [
+      {
+        "iteration": 1,
+        "reward": -1.0,
+        "synapses_adapted": 132,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.2
+      },
+      {
+        "iteration": 2,
+        "reward": 1.0,
+        "synapses_adapted": 178,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 61.7
+      },
+      {
+        "iteration": 3,
+        "reward": -1.0,
+        "synapses_adapted": 216,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.0
+      },
+      {
+        "iteration": 4,
+        "reward": -1.0,
+        "synapses_adapted": 234,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.3
+      },
+      {
+        "iteration": 5,
+        "reward": 1.0,
+        "synapses_adapted": 282,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 64.3
+      },
+      {
+        "iteration": 6,
+        "reward": 1.0,
+        "synapses_adapted": 295,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 61.0
+      },
+      {
+        "iteration": 7,
+        "reward": -1.0,
+        "synapses_adapted": 320,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.2
+      },
+      {
+        "iteration": 8,
+        "reward": 1.0,
+        "synapses_adapted": 344,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 63.1
+      },
+      {
+        "iteration": 9,
+        "reward": -1.0,
+        "synapses_adapted": 357,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 62.6
+      },
+      {
+        "iteration": 10,
+        "reward": 1.0,
+        "synapses_adapted": 378,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 64.1
+      },
+      {
+        "iteration": 11,
+        "reward": 1.0,
+        "synapses_adapted": 383,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 64.2
+      },
+      {
+        "iteration": 12,
+        "reward": 1.0,
+        "synapses_adapted": 386,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 63.4
+      },
+      {
+        "iteration": 13,
+        "reward": -1.0,
+        "synapses_adapted": 400,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.3
+      },
+      {
+        "iteration": 14,
+        "reward": 1.0,
+        "synapses_adapted": 460,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 64.3
+      },
+      {
+        "iteration": 15,
+        "reward": 1.0,
+        "synapses_adapted": 470,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 61.1
+      },
+      {
+        "iteration": 16,
+        "reward": 1.0,
+        "synapses_adapted": 470,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 53.7
+      },
+      {
+        "iteration": 17,
+        "reward": 0.2,
+        "synapses_adapted": 473,
+        "tests_passed": false,
+        "error": "Key 2 was not evicted",
+        "speed_tok_s": 63.4
+      },
+      {
+        "iteration": 18,
+        "reward": -1.0,
+        "synapses_adapted": 479,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.3
+      },
+      {
+        "iteration": 19,
+        "reward": -1.0,
+        "synapses_adapted": 486,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.2
+      },
+      {
+        "iteration": 20,
+        "reward": 0.2,
+        "synapses_adapted": 487,
+        "tests_passed": false,
+        "error": "Failed overwrite key",
+        "speed_tok_s": 62.4
+      },
+      {
+        "iteration": 21,
+        "reward": -1.0,
+        "synapses_adapted": 500,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.2
+      },
+      {
+        "iteration": 22,
+        "reward": -1.0,
+        "synapses_adapted": 504,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 64.2
+      },
+      {
+        "iteration": 23,
+        "reward": -1.0,
+        "synapses_adapted": 511,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "speed_tok_s": 62.9
+      },
+      {
+        "iteration": 24,
+        "reward": 1.0,
+        "synapses_adapted": 513,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 58.9
+      },
+      {
+        "iteration": 25,
+        "reward": 1.0,
+        "synapses_adapted": 515,
+        "tests_passed": true,
+        "error": null,
+        "speed_tok_s": 58.5
+      }
+    ],
+    "neuromorphic_lif": [
+      {
+        "iteration": 1,
+        "seed": 3000,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 64.25,
+        "synaptic_norm": 0.75,
+        "code_chars": 1623,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __init_..."
+      },
+      {
+        "iteration": 2,
+        "seed": 3001,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 60.08,
+        "synaptic_norm": 1.0851,
+        "code_chars": 1441,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __init_..."
+      },
+      {
+        "iteration": 3,
+        "seed": 3002,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 64.12,
+        "synaptic_norm": 1.3038,
+        "code_chars": 1666,
+        "code_snippet": "from typing import Optional\n\nclass Node:\n    def __init__(self, key: int, value: int):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next ..."
+      },
+      {
+        "iteration": 4,
+        "seed": 3003,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 58.84,
+        "synaptic_norm": 1.7051,
+        "code_chars": 1377,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __init_..."
+      },
+      {
+        "iteration": 5,
+        "seed": 3004,
+        "reward": 0.2,
+        "syntax_valid": true,
+        "tests_passed": false,
+        "error": "Key 2 was not evicted",
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 61.71,
+        "synaptic_norm": 1.7141,
+        "code_chars": 1542,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __init_..."
+      },
+      {
+        "iteration": 6,
+        "seed": 3005,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 62.02,
+        "synaptic_norm": 1.8949,
+        "code_chars": 1545,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __init_..."
+      },
+      {
+        "iteration": 7,
+        "seed": 3006,
+        "reward": -1.0,
+        "syntax_valid": false,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "classes": [],
+        "speed_tok_s": 62.64,
+        "synaptic_norm": 2.006,
+        "code_chars": 1890,
+        "code_snippet": "Вот пример реализации класса `LRUCache` с использованием двусвязного списка с фиктивными узлами `head` и `tail` в Python. Этот класс обеспечивает O(1) время для операций `get` и `p..."
+      },
+      {
+        "iteration": 8,
+        "seed": 3007,
+        "reward": -1.0,
+        "syntax_valid": false,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "classes": [],
+        "speed_tok_s": 62.0,
+        "synaptic_norm": 2.1358,
+        "code_chars": 1922,
+        "code_snippet": "```python\nclass Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    d..."
+      },
+      {
+        "iteration": 9,
+        "seed": 3008,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 57.39,
+        "synaptic_norm": 2.3231,
+        "code_chars": 1263,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __init_..."
+      },
+      {
+        "iteration": 10,
+        "seed": 3009,
+        "reward": 0.2,
+        "syntax_valid": true,
+        "tests_passed": false,
+        "error": "Key 2 was not evicted",
+        "classes": [
+          "LRUCache",
+          "Node"
+        ],
+        "speed_tok_s": 60.52,
+        "synaptic_norm": 2.3261,
+        "code_chars": 1710,
+        "code_snippet": "class LRUCache:\n    class Node:\n        def __init__(self, key: int, value: int):\n            self.key = key\n            self.value = value\n            self.prev = None\n           ..."
+      },
+      {
+        "iteration": 11,
+        "seed": 3010,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 61.43,
+        "synaptic_norm": 2.4471,
+        "code_chars": 1721,
+        "code_snippet": "class Node:\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    d..."
+      },
+      {
+        "iteration": 12,
+        "seed": 3011,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 64.2,
+        "synaptic_norm": 2.5606,
+        "code_chars": 1513,
+        "code_snippet": "class Node:\n    def __init__(self, key: int, value: int):\n        self.key = key\n        self.value = value\n        self.prev: Node | None = None\n        self.next: Node | None = N..."
+      },
+      {
+        "iteration": 13,
+        "seed": 3012,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 62.45,
+        "synaptic_norm": 2.7855,
+        "code_chars": 1689,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __init_..."
+      },
+      {
+        "iteration": 14,
+        "seed": 3013,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 63.14,
+        "synaptic_norm": 3.0808,
+        "code_chars": 1735,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __init_..."
+      },
+      {
+        "iteration": 15,
+        "seed": 3014,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 61.27,
+        "synaptic_norm": 3.3261,
+        "code_chars": 1527,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.next = None\n        self.prev = None\n\nclass LRUCache:\n    def __init_..."
+      },
+      {
+        "iteration": 16,
+        "seed": 3015,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 59.43,
+        "synaptic_norm": 3.3895,
+        "code_chars": 1568,
+        "code_snippet": "class Node:\n    def __init__(self, key: int, value: int):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    d..."
+      },
+      {
+        "iteration": 17,
+        "seed": 3016,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 64.3,
+        "synaptic_norm": 3.4928,
+        "code_chars": 1491,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __init_..."
+      },
+      {
+        "iteration": 18,
+        "seed": 3017,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "ListNode",
+          "LRUCache"
+        ],
+        "speed_tok_s": 62.13,
+        "synaptic_norm": 3.5819,
+        "code_chars": 1595,
+        "code_snippet": "class ListNode:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __i..."
+      },
+      {
+        "iteration": 19,
+        "seed": 3018,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 64.24,
+        "synaptic_norm": 3.6564,
+        "code_chars": 1814,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    def __init_..."
+      },
+      {
+        "iteration": 20,
+        "seed": 3019,
+        "reward": -1.0,
+        "syntax_valid": false,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "classes": [],
+        "speed_tok_s": 61.86,
+        "synaptic_norm": 3.506,
+        "code_chars": 1903,
+        "code_snippet": "```python\nclass Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    d..."
+      },
+      {
+        "iteration": 21,
+        "seed": 3020,
+        "reward": -1.0,
+        "syntax_valid": false,
+        "tests_passed": false,
+        "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+        "classes": [],
+        "speed_tok_s": 64.11,
+        "synaptic_norm": 3.3535,
+        "code_chars": 1867,
+        "code_snippet": "```python\nclass Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    d..."
+      },
+      {
+        "iteration": 22,
+        "seed": 3021,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "LRUCache",
+          "Node"
+        ],
+        "speed_tok_s": 61.98,
+        "synaptic_norm": 3.6029,
+        "code_chars": 1764,
+        "code_snippet": "class LRUCache:\n    class Node:\n        def __init__(self, key: int, value: int):\n            self.key = key\n            self.value = value\n            self.prev = None\n           ..."
+      },
+      {
+        "iteration": 23,
+        "seed": 3022,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 64.24,
+        "synaptic_norm": 3.7864,
+        "code_chars": 1842,
+        "code_snippet": "from collections import deque\n\nclass Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n..."
+      },
+      {
+        "iteration": 24,
+        "seed": 3023,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 64.17,
+        "synaptic_norm": 3.9946,
+        "code_chars": 1726,
+        "code_snippet": "class Node:\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\nclass LRUCache:\n    d..."
+      },
+      {
+        "iteration": 25,
+        "seed": 3024,
+        "reward": 1.0,
+        "syntax_valid": true,
+        "tests_passed": true,
+        "error": null,
+        "classes": [
+          "Node",
+          "LRUCache"
+        ],
+        "speed_tok_s": 59.74,
+        "synaptic_norm": 4.2249,
+        "code_chars": 1377,
+        "code_snippet": "class Node:\n    def __init__(self, key, value):\n        self.key = key\n        self.value = value\n        self.next = None\n        self.prev = None\n\nclass LRUCache:\n    def __init_..."
+      }
+    ]
+  }
+}

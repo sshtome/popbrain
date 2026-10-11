@@ -1,0 +1,367 @@
+{
+  "train_log": [
+    {
+      "episode": 1,
+      "task_id": "lru_cache",
+      "reward": -1.0,
+      "passed": false,
+      "synaptic_norm": 1.52
+    },
+    {
+      "episode": 2,
+      "task_id": "trie",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 2.1226
+    },
+    {
+      "episode": 3,
+      "task_id": "median_finder",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 3.0146
+    },
+    {
+      "episode": 4,
+      "task_id": "lru_cache",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 3.6687
+    },
+    {
+      "episode": 5,
+      "task_id": "trie",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 4.5593
+    },
+    {
+      "episode": 6,
+      "task_id": "median_finder",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 4.9127
+    },
+    {
+      "episode": 7,
+      "task_id": "lru_cache",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 5.5943
+    },
+    {
+      "episode": 8,
+      "task_id": "trie",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 6.1282
+    },
+    {
+      "episode": 9,
+      "task_id": "median_finder",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 6.514
+    },
+    {
+      "episode": 10,
+      "task_id": "lru_cache",
+      "reward": -1.0,
+      "passed": false,
+      "synaptic_norm": 6.7224
+    },
+    {
+      "episode": 11,
+      "task_id": "trie",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 7.1083
+    },
+    {
+      "episode": 12,
+      "task_id": "median_finder",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 7.6991
+    },
+    {
+      "episode": 13,
+      "task_id": "lru_cache",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 7.9836
+    },
+    {
+      "episode": 14,
+      "task_id": "trie",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 8.6163
+    },
+    {
+      "episode": 15,
+      "task_id": "median_finder",
+      "reward": 0.2,
+      "passed": false,
+      "synaptic_norm": 8.6798
+    },
+    {
+      "episode": 16,
+      "task_id": "lru_cache",
+      "reward": -1.0,
+      "passed": false,
+      "synaptic_norm": 8.9768
+    },
+    {
+      "episode": 17,
+      "task_id": "trie",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 9.5061
+    },
+    {
+      "episode": 18,
+      "task_id": "median_finder",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 10.0
+    },
+    {
+      "episode": 19,
+      "task_id": "lru_cache",
+      "reward": -1.0,
+      "passed": false,
+      "synaptic_norm": 9.9758
+    },
+    {
+      "episode": 20,
+      "task_id": "trie",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 10.6363
+    },
+    {
+      "episode": 21,
+      "task_id": "median_finder",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 10.9613
+    },
+    {
+      "episode": 22,
+      "task_id": "lru_cache",
+      "reward": -1.0,
+      "passed": false,
+      "synaptic_norm": 11.2096
+    },
+    {
+      "episode": 23,
+      "task_id": "trie",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 11.9756
+    },
+    {
+      "episode": 24,
+      "task_id": "median_finder",
+      "reward": 0.2,
+      "passed": false,
+      "synaptic_norm": 12.034
+    },
+    {
+      "episode": 25,
+      "task_id": "lru_cache",
+      "reward": -1.0,
+      "passed": false,
+      "synaptic_norm": 12.5052
+    },
+    {
+      "episode": 26,
+      "task_id": "trie",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 13.1473
+    },
+    {
+      "episode": 27,
+      "task_id": "median_finder",
+      "reward": 0.2,
+      "passed": false,
+      "synaptic_norm": 13.2504
+    },
+    {
+      "episode": 28,
+      "task_id": "lru_cache",
+      "reward": -1.0,
+      "passed": false,
+      "synaptic_norm": 13.7005
+    },
+    {
+      "episode": 29,
+      "task_id": "trie",
+      "reward": 1.0,
+      "passed": true,
+      "synaptic_norm": 14.5105
+    },
+    {
+      "episode": 30,
+      "task_id": "median_finder",
+      "reward": -0.4,
+      "passed": false,
+      "synaptic_norm": 14.5441
+    }
+  ],
+  "test_results": {
+    "baseline": [
+      {
+        "run": 1,
+        "task_id": "lru_cache",
+        "passed": false,
+        "reward": -1.0
+      },
+      {
+        "run": 2,
+        "task_id": "trie",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 3,
+        "task_id": "median_finder",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 4,
+        "task_id": "lru_cache",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 5,
+        "task_id": "trie",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 6,
+        "task_id": "median_finder",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 7,
+        "task_id": "lru_cache",
+        "passed": false,
+        "reward": -1.0
+      },
+      {
+        "run": 8,
+        "task_id": "trie",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 9,
+        "task_id": "median_finder",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 10,
+        "task_id": "lru_cache",
+        "passed": false,
+        "reward": -1.0
+      },
+      {
+        "run": 11,
+        "task_id": "trie",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 12,
+        "task_id": "median_finder",
+        "passed": false,
+        "reward": -0.4
+      }
+    ],
+    "trained_adapter": [
+      {
+        "run": 1,
+        "task_id": "lru_cache",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 2,
+        "task_id": "trie",
+        "passed": false,
+        "reward": -1.0
+      },
+      {
+        "run": 3,
+        "task_id": "median_finder",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 4,
+        "task_id": "lru_cache",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 5,
+        "task_id": "trie",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 6,
+        "task_id": "median_finder",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 7,
+        "task_id": "lru_cache",
+        "passed": false,
+        "reward": -1.0
+      },
+      {
+        "run": 8,
+        "task_id": "trie",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 9,
+        "task_id": "median_finder",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 10,
+        "task_id": "lru_cache",
+        "passed": false,
+        "reward": -1.0
+      },
+      {
+        "run": 11,
+        "task_id": "trie",
+        "passed": true,
+        "reward": 1.0
+      },
+      {
+        "run": 12,
+        "task_id": "median_finder",
+        "passed": true,
+        "reward": 1.0
+      }
+    ]
+  },
+  "b_pass_rate": 66.66666666666666,
+  "a_pass_rate": 75.0,
+  "synaptic_norm": 14.544052124023438
+}

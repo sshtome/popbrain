@@ -20,6 +20,7 @@ from .optim import AdamES
 from .utils import convert_json_to_npz
 from .streamer import SlidingWindowStreamer, SpikeActivationGate, TieredLayerStreamer
 from . import models
+from .dopamine import PopBrainSpikingAdapter
 
 __version__ = "1.0.0"
 __all__ = [
@@ -30,5 +31,6 @@ __all__ = [
     "SlidingWindowStreamer",
     "TieredLayerStreamer",
     "SpikeActivationGate",
+    "PopBrainSpikingAdapter",
     "models",
 ]
