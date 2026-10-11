@@ -10,3 +10,5 @@ dist/
 *.zip
 downloaded_wheels/
 *.log
+assets/cache/
+models/

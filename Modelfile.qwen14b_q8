@@ -1,0 +1,20 @@
+FROM d:\projects\models\Qwen2.5-Coder-14B-Instruct-Q8_0.gguf
+
+TEMPLATE """{{ if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ if .Prompt }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant
+{{ .Response }}<|im_end|>"""
+
+# Context window: 4096 tokens
+PARAMETER num_ctx 4096
+
+# Hybrid execution: 28 layers on GPU (8.5GB VRAM), 20 layers in Host RAM
+# Strictly preserves 20% free VRAM buffer
+PARAMETER num_gpu 28
+
+# Deterministic evaluation parameters
+PARAMETER temperature 0.0
+PARAMETER top_p 1.0
+PARAMETER seed 42
