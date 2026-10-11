@@ -13,7 +13,11 @@ import torch
 
 sys.path.insert(0, os.path.abspath("."))
 
-from popbrain.dopamine import PopBrainSpikingAdapter, PopBrainSynapticMemory
+from popbrain.dopamine import (
+    PopBrainSpikingAdapter,
+    PopBrainSynapticMemory,
+    PopBrainHierarchicalSynapticMemory
+)
 
 
 class TestPopBrainDopamineModules(unittest.TestCase):
@@ -86,6 +90,38 @@ class TestPopBrainDopamineModules(unittest.TestCase):
         finally:
             if os.path.exists(ckpt_path):
                 os.remove(ckpt_path)
+
+    def test_hierarchical_memory_trajectory_and_margin(self):
+        dim = 64
+        h_mem = PopBrainHierarchicalSynapticMemory(
+            hidden_dim=dim,
+            window_size=3,
+            gamma=0.5,
+            inhibition_threshold=0.80,
+            margin_threshold=0.03,
+            num_clusters=4,
+            device=self.device
+        )
+
+        # Ingest sequences
+        h_seq1 = torch.randn(6, dim, device=self.device, dtype=torch.bfloat16)
+        e_seq1 = torch.randn(6, dim, device=self.device, dtype=torch.bfloat16)
+        h_mem.ingest_sequence(h_seq1, e_seq1, reward=1.0)
+        self.assertEqual(h_mem.num_memories, 5)
+
+        # Query with exact trajectory
+        h_mem.reset_runtime_trajectory()
+        for t in range(4):
+            delta_h, max_sim = h_mem.compute_synaptic_modulation(h_seq1[t])
+
+        # Step 3 matches key at step 3 with full confidence
+        self.assertGreater(max_sim, 0.90)
+
+        # Query with random noise should produce 0.0 modulation (inhibited)
+        h_mem.reset_runtime_trajectory()
+        rand_h = torch.randn(dim, device=self.device, dtype=torch.bfloat16)
+        delta_rand, rand_sim = h_mem.compute_synaptic_modulation(rand_h)
+        self.assertEqual(delta_rand.norm().item(), 0.0)
 
 
 if __name__ == "__main__":
