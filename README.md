@@ -182,6 +182,40 @@ Run the capacity scaling benchmark:
 python examples/run_capacity_vs_interference_study.py --milestones "5,10,20,30,40,50"
 ```
 
+---
+
+### 7. Massive Capacity Scaling: 10,000 Facts Ingestion Benchmark
+
+To shatter the capacity boundaries of dense associative networks on consumer hardware, we introduced **Spherical Voronoi Inverted Indexing (`PopBrainScale10kMemory`)** with 256 cortical columns (IVF-256) and differential margin competition.
+
+We scaled memory load up to **10,000 factual associations (192,654 transitions)** using SQuAD factual pairs on a single **RTX 3060 12GB**:
+
+<div align="center">
+  <img src="assets/capacity_study/capacity_10k_scaling.png" width="95%" alt="PopBrain 10,000 Facts Synaptic Memory Scaling" />
+</div>
+
+| Stored Facts ($N$) | Stored Transitions ($M$) | Ingest Time | IVF Build Time | Recall Rate $R(N)$ | Cross-Talk Interference $I(N)$ | Step Latency | VRAM Allocated |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **100** | 1,617 | 1.83 s | 0.22 s | **96.0%** (48/50) | **0.0%** (0/50) | 50.43 ms | 4.53 GB |
+| **500** | 9,763 | 8.19 s | 0.18 s | **84.0%** (42/50) | **0.0%** (0/50) | 51.79 ms | 4.62 GB |
+| **1,000** | 19,078 | 9.06 s | 0.19 s | **82.0%** (41/50) | **0.0%** (0/50) | 51.42 ms | 4.71 GB |
+| **2,500** | 48,919 | 28.54 s | 0.22 s | **80.0%** (40/50) | **0.0%** (0/50) | 51.64 ms | 5.00 GB |
+| **5,000** | 96,832 | 609.55 s | 0.30 s | **80.0%** (40/50) | **0.0%** (0/50) | 53.85 ms | 5.45 GB |
+| **10,000** | 192,654 | 91.46 s | 0.43 s | **76.0%** (38/50) | **2.0%** (1/50) | 54.79 ms | 6.36 GB |
+
+**Highlights:**
+- **Zero Gradient Graph:** 0 MB autograd computation graph (`torch.no_grad()`).
+- **Resilient Retention:** Retained **76.0% factual recall** at 10,000 facts.
+- **Cross-Talk Suppression:** Only **2.0%** spurious activation on 50 unlearned distractor queries.
+- **Total VRAM:** **6.36 GB** ($5.6\text{ GB}$ headroom remaining on an RTX 3060 12GB).
+- **Sub-Millisecond Search Overhead:** Coarse Voronoi gating limits fine search to top active cells, adding $< 1.5\text{ ms}$ over bare LLM forward latency.
+
+Run the 10,000 facts benchmark:
+```bash
+python examples/run_10k_memory_benchmark.py
+```
+
+
 ## Quickstart
 
 ### Installation

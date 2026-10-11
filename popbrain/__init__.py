@@ -24,10 +24,11 @@ from .dopamine import (
     PopBrainSpikingAdapter,
     PopBrainSynapticMemory,
     PopBrainHierarchicalSynapticMemory,
+    PopBrainScale10kMemory,
     SynapticCapacityBenchmark,
 )
 
-__version__ = "1.2.0"
+__version__ = "1.3.0"
 __all__ = [
     "PopBrain",
     "TensorBrainState",
@@ -39,6 +40,7 @@ __all__ = [
     "PopBrainSpikingAdapter",
     "PopBrainSynapticMemory",
     "PopBrainHierarchicalSynapticMemory",
+    "PopBrainScale10kMemory",
     "SynapticCapacityBenchmark",
     "models",
 ]

@@ -1,0 +1,50 @@
+[
+  {
+    "N": 100,
+    "transitions": 1617,
+    "recall": 96.0,
+    "interference": 0.0,
+    "latency_ms": 50.43136472496256,
+    "vram_gb": 4.5299763679504395
+  },
+  {
+    "N": 500,
+    "transitions": 9763,
+    "recall": 84.0,
+    "interference": 0.0,
+    "latency_ms": 51.792849710981145,
+    "vram_gb": 4.617729663848877
+  },
+  {
+    "N": 1000,
+    "transitions": 19078,
+    "recall": 82.0,
+    "interference": 0.0,
+    "latency_ms": 51.42221923081292,
+    "vram_gb": 4.706116199493408
+  },
+  {
+    "N": 2500,
+    "transitions": 48919,
+    "recall": 80.0,
+    "interference": 0.0,
+    "latency_ms": 51.642416397841174,
+    "vram_gb": 4.999046802520752
+  },
+  {
+    "N": 5000,
+    "transitions": 96832,
+    "recall": 80.0,
+    "interference": 0.0,
+    "latency_ms": 53.850851142966086,
+    "vram_gb": 5.446808815002441
+  },
+  {
+    "N": 10000,
+    "transitions": 192654,
+    "recall": 76.0,
+    "interference": 2.0,
+    "latency_ms": 54.78818916665963,
+    "vram_gb": 6.355600357055664
+  }
+]
